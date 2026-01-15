@@ -188,7 +188,8 @@
   background: transparent;
   width: fit-content;
   min-width: 382px;
-  height: 119px;
+  min-height: 119px;
+  height: auto;
   box-sizing: border-box;
   align-items: center;
   justify-content: center;
@@ -261,6 +262,10 @@
   color: #111111;
   width: 100%;
   text-align: center;
+  white-space: normal;
+  line-height: 1.05;
+  overflow-wrap: anywhere;
+  word-break: break-word;
   /* Extra-bold fallback if the font doesn't have 1000 weight */
   -webkit-text-stroke: 0.35px #111111;
   text-shadow: 0 0 0 #111111, 0.35px 0 #111111, -0.35px 0 #111111;

@@ -43,6 +43,13 @@
   display: block;
 }
 
+.block3Link {
+  display: block;
+  text-decoration: none;
+}
+
+
+
 .block1,
 .block2,
 .block3 {
@@ -76,6 +83,7 @@
   margin-left: calc(332 * var(--u));
   margin-right: calc(332 * var(--u));
   margin-bottom: calc(100 * var(--u));
+  cursor: pointer;
 }
 
 @media (max-width: 1000px) {

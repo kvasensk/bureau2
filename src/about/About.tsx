@@ -3,6 +3,8 @@ import style from './About.module.css';
 
 export default function About() {
   const navigate = useNavigate();
+  const taplinkUrl =
+    'https://taplink.cc/6.5.buro?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPNTY3MDY3MzQzMzUyNDI3AAGnzaQd0sDWOX7Y89ZzgQuDwQrlGCFA5ELZCphPIsEBm3Z0bs8kRoh-FkS6wn0_aem_BqkEPEOsDKqWkP3YmL7qfQ';
   return (
     <div className={style.wrapper}>
       <button
@@ -45,12 +47,19 @@ export default function About() {
         <picture>
           <source media='(max-width: 500px)' srcSet='/about/b3m.svg' />
           <source media='(max-width: 1000px)' srcSet='/about/block3tab.svg' />
-          <img
-            className={style.block3}
-            src='/about/block3Desk.svg'
-            alt='About block 3'
-            draggable={false}
-          />
+          <a
+            className={style.block3Link}
+            href={taplinkUrl}
+            target='_blank'
+            rel='noreferrer'
+          >
+            <img
+              className={style.block3}
+              src='/about/block3Desk.svg'
+              alt='About block 3'
+              draggable={false}
+            />
+          </a>
         </picture>
       </div>
     </div>

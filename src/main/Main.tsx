@@ -1,5 +1,5 @@
 import type { MouseEvent, SyntheticEvent } from 'react';
-import { useEffect } from 'react';
+import { useEffect, useLayoutEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import style from './Main.module.css';
 
@@ -68,6 +68,9 @@ const renderLinkedImg = (item: string) => (
 );
 
 export default function Main() {
+  const itemsMobileRef = useRef<HTMLDivElement | null>(null);
+  const bottomButtonImgRef = useRef<HTMLImageElement | null>(null);
+
   useEffect(() => {
     const handleResize = () => {
       const images = document.querySelectorAll<HTMLImageElement>(
@@ -93,11 +96,48 @@ export default function Main() {
     };
   }, []);
 
+  useLayoutEffect(() => {
+    const itemsMobileEl = itemsMobileRef.current;
+    const bottomImgEl = bottomButtonImgRef.current;
+    if (!itemsMobileEl || !bottomImgEl) return;
+
+    const apply = () => {
+      if (window.innerWidth <= 1200) {
+        // Measure the actual rendered width; we want the button to match what the user sees.
+        const width = itemsMobileEl.getBoundingClientRect().width;
+        bottomImgEl.style.width = `${width}px`;
+        bottomImgEl.style.height = 'auto';
+      } else {
+        bottomImgEl.style.width = '';
+        bottomImgEl.style.height = '';
+      }
+    };
+
+    apply();
+
+    // Track any width changes caused by image loads/layout shifts, not just window resize.
+    const ro =
+      typeof ResizeObserver !== 'undefined'
+        ? new ResizeObserver(() => apply())
+        : null;
+    ro?.observe(itemsMobileEl);
+
+    window.addEventListener('resize', apply);
+    return () => {
+      ro?.disconnect();
+      window.removeEventListener('resize', apply);
+    };
+  }, []);
+
   return (
     <div className={style.wrapper}>
       <Link to='/about' className={style.titleRow}>
-        <img className={style.logo} src='items/infra/logo.svg' alt='6|5 logo' />
-        <div className={style.title}>design buro</div>
+        <img
+          className={style.logoMain}
+          src='/help/logoMain.svg'
+          alt='6|5 design buro'
+          draggable={false}
+        />
       </Link>
       <div className={`${style.items} ${style.itemsDesktop}`}>
         <div className={style.firstLine}>
@@ -135,7 +175,7 @@ export default function Main() {
           <div className={style.object20}>{renderLinkedImg('item_16')}</div>
         </div>
       </div>
-      <div className={style.itemsMobile}>
+      <div className={style.itemsMobile} ref={itemsMobileRef}>
         <div className={style.columnMobile}>
           <div className={style.object9}>{renderLinkedImg('item_3')}</div>
           <div className={style.object1}>
@@ -166,12 +206,14 @@ export default function Main() {
         </div>
       </div>
       <div className={style.controls}>
-        <Link to='/modular' className={style.controlButton}>
-          MODULAR
-        </Link>
-
-        <Link to='/modular' className={style.controlButton}>
-          COLLECTION
+        <Link to='/modular' className={style.bottomButtonLink}>
+          <img
+            ref={bottomButtonImgRef}
+            className={style.bottomButtonImg}
+            src='/help/bottomButtonDT.svg'
+            alt='Modular / Collection'
+            draggable={false}
+          />
         </Link>
       </div>
     </div>

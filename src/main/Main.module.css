@@ -8,10 +8,9 @@
 .titleRow {
   display: flex;
   flex-direction: row;
-  align-items: flex-end;
-  gap: 0.417vw;
+  align-items: center;
+  gap: 0;
   margin: 0 0 2.813vw;
-  white-space: nowrap;
   cursor: pointer;
   transition: opacity 0.2s ease;
   text-decoration: none;
@@ -34,30 +33,17 @@
 }
 
 .titleRow:hover {
-  .logo, .title {
+  .logoMain {
     opacity: 0.7;
   }
 }
 
-.logo {
-  width: 12.917vw;
+.logoMain {
   height: 6.875vw;
+  width: auto;
   object-fit: contain;
   display: block;
   flex-shrink: 0;
-
-}
-
-
-
-.title {
-  font-size: 6.51vw;
-  font-weight: 300;
-  line-height: normal;
-  letter-spacing: 0;
-  color: #111111;
-  flex-shrink: 0;
-
 }
 
 .items {
@@ -201,8 +187,28 @@
 .controls {
   display: flex;
   flex-direction: row;
-  gap: 14.063vw;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
   margin-top: 2.813vw;
+}
+
+.bottomButtonLink {
+  display: inline-block;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  text-decoration: none;
+}
+
+.bottomButtonLink:hover {
+  opacity: 0.7;
+}
+
+.bottomButtonImg {
+  display: block;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
 }
 
 .controlButton {
@@ -232,9 +238,6 @@
     padding: 24px 24px;
     margin: 0;
   }
-.title{
-  font-size: 9vw; 
-}
 
 .titleRow {
 
@@ -242,9 +245,9 @@
 
 }
 
-.logo {
-  width: 15.917vw; 
-  height: 10.875vw; 
+.logoMain {
+  height: 10.875vw;
+  width: auto;
 }
 
 .controlButton {

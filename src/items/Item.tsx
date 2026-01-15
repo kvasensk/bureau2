@@ -120,7 +120,7 @@ export function ItemPage(props: ItemPageProps & { id: string }) {
     const s = Math.max(0.0001, scale);
     return {
       // width: `${188 / s}px`,
-      height: `${51 / s}px`,
+      minHeight: `${51 / s}px`,
     } as React.CSSProperties;
   }, [scale, vw]);
 
@@ -160,7 +160,7 @@ export function ItemPage(props: ItemPageProps & { id: string }) {
 
     return {
       // width: `${Math.max(baseW, minW / s)}px`,
-      height: `${Math.max(baseH, minH / s)}px`,
+      minHeight: `${Math.max(baseH, minH / s)}px`,
     } as React.CSSProperties;
   }, [scale]);
 
