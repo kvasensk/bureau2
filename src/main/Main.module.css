@@ -10,12 +10,18 @@
   flex-direction: row;
   align-items: center;
   gap: 0;
-  margin-top: 50px;
+  margin-top: 0;
   margin-bottom: 2.813vw;
   cursor: pointer;
   transition: opacity 0.2s ease;
   text-decoration: none;
   color: inherit;
+}
+
+@media (min-width: 1201px) {
+  .titleRow {
+    margin-top: 50px;
+  }
 }
 
 .itemLink {
