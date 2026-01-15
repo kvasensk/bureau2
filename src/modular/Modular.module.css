@@ -1,0 +1,677 @@
+.wrapper {
+  width: 100%;
+  min-height: 100vh;
+  background: #ffffff;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.backButton {
+  pointer-events: auto;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  line-height: 1;
+  padding: 8px;
+  transition: opacity 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.backIcon {
+  width: 40px;
+  height: 40px;
+  display: block;
+}
+
+.backButton:hover {
+  opacity: 0.7;
+}
+
+.label {
+  pointer-events: none;
+  font-size: 16px;
+  font-weight: 400;
+  color: #111111;
+}
+
+.stageOuter {
+  padding: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: hidden;
+}
+
+.dividerOuter {
+  width: 100%;
+}
+
+.stage {
+  width: 1920px;
+  height: 1080px;
+  margin: 0;
+  background: #ffffff;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transform-origin: top center;
+}
+
+.dividerStage {
+  width: 1920px;
+  background: #ffffff;
+}
+
+.mobileFlow {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.mobileStage {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.mobileStage2 {
+  padding: 0 10px;
+}
+
+.mobileStage3 {
+  padding: 0 20px 0 0;
+}
+
+.mobileStage4,
+.mobileStage5 {
+  padding: 0 20px;
+}
+
+.mobileImg,
+.mobileDivider {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.mobileDivider {
+  margin: 49px 0;
+}
+
+.topRow {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+.left,
+.right {
+  width: 411px;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  pointer-events: none;
+  flex: 0 0 411px;
+}
+
+.left {
+  object-position: left center;
+}
+
+.right {
+  object-position: right center;
+}
+
+.leftCompact,
+.rightCompact {
+  display: none;
+}
+
+.leftDesktop,
+.rightDesktop {
+  display: block;
+}
+
+.center {
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: clamp(28px, 3vw, 56px);
+  padding-bottom: 0;
+  gap: clamp(16px, 2.2vw, 32px);
+  flex: 0 0 800px;
+  margin: 0;
+}
+
+.bottomRow {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
+
+.dividerRow {
+  margin-top: 0;
+  width: 100%;
+}
+
+.topLogo {
+  width: clamp(84px, 8vw, 120px);
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.stage1LogoRow {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 16px;
+  padding-bottom: 12px;
+}
+
+.stage1Logo {
+  width: 120px;
+  height: 33px;
+  object-fit: contain;
+  display: block;
+}
+
+.textArea {
+  flex: 1 1 auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.textBlock {
+  width: fit-content;
+  max-width: 100%;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: #111111;
+}
+
+.h1 {
+  width: fit-content;
+  display: inline-block;
+  font-size: clamp(44px, 4.8vw, 96px);
+  font-weight: 1000;
+  letter-spacing: 0.02em;
+  line-height: 1.05;
+  margin: 0 0 clamp(14px, 1.3vw, 22px);
+  -webkit-text-stroke: 0.35px #111111;
+  text-shadow: 0 0 0 #111111, 0.35px 0 #111111, -0.35px 0 #111111;
+}
+
+.lead {
+  font-size: clamp(22px, 1.1vw, 22px);
+  line-height: 1.35;
+  margin: 0 0 clamp(10px, 0.9vw, 16px);
+}
+
+.lead strong {
+  font-weight: 800;
+}
+
+.body {
+  font-size: clamp(22px, 0.9vw, 22px);
+  line-height: 1.35;
+  margin: 0 0 clamp(8px, 0.8vw, 14px);
+}
+
+.bottom {
+  width: 1284px;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+@media (max-width: 1100px) {
+}
+
+@media (max-width: 800px) {
+  .stage1LogoRow {
+    padding-top: 24px;
+    padding-bottom: 8px;
+  }
+
+  .stage {
+    width: 728px;
+    height: auto;
+    min-height: 0;
+  }
+
+  .dividerStage {
+    width: 100%;
+  }
+
+  .dividerOuter {
+    padding: 0 8px;
+    box-sizing: border-box;
+  }
+
+  .topRow {
+    width: 100%;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0;
+  }
+
+  .leftDesktop,
+  .rightDesktop {
+    display: none;
+  }
+
+  .leftCompact,
+  .rightCompact {
+    display: block;
+    width: 136px;
+    flex: 0 0 136px;
+    height: 700px;
+  }
+
+  .topLogo {
+    display: none;
+  }
+
+  .center {
+
+    flex: 1 1 0;
+    min-width: 0;
+    width: 60%;
+    max-width: 456px;
+    aspect-ratio: 456 / 397;
+    height: auto;
+    padding-top: 0;
+    gap: 16px;
+    justify-content: center;
+  }
+
+  .bottomRow {
+    position: relative;
+    padding: 0;
+  }
+}
+
+@media (max-width: 700px) {
+  .dividerOuter {
+    padding-left: 12px;
+    padding-right: 8px;
+  }
+}
+
+.stage2 {
+  width: 1920px;
+  margin: 0;
+  background: #ffffff;
+  position: relative;
+  transform-origin: top center;
+  display: flex;
+  flex-direction: column;
+}
+
+.stage2Inner {
+  padding: 0 250px 0;
+  box-sizing: border-box;
+}
+
+.stage2Title {
+  font-size: 22px;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #111111;
+  margin: 0 0 22px;
+}
+
+.stage2PicWrap {
+  position: relative;
+  width: 1420px;
+  height: 953px;
+}
+
+.stage2Pic {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+.stage2Caption {
+  position: absolute;
+  left: 720px;
+  bottom: 0px;
+  width: 540px;
+  font-size: 22px;
+  line-height: 1.25;
+  color: #111111;
+}
+
+.stage2BottomRow {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 43px;
+}
+
+.stage2Bottom {
+  width: 1293px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+@media (max-width: 800px) {
+  .stage2 {
+    width: 100%;
+    height: auto;
+    padding: 0;
+  }
+
+  .stage2Inner {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .stage2Title {
+    width: 668px;
+    max-width: 100%;
+    margin: 0 auto 16px;
+    text-align: left;
+    font-size: clamp(14px, 3.25vw, 26px);
+  }
+
+  .stage2PicWrap {
+    width: 668px;
+    aspect-ratio: 668 / 482;
+    height: auto;
+    position: relative;
+  }
+
+  .stage2Pic {
+    width: 100%;
+    height: 100%;
+  }
+
+  .stage2Caption {
+    position: absolute;
+    left: 50.7%;
+    transform: none;
+    bottom: clamp(0px, calc((668px - 100vw) * 0.1), 18px);
+    width: 50%;
+    max-height: 85px;
+    font-size: clamp(10px, 2.1vw, 14px);
+    line-height: 1.25;
+    color: #111111;
+    overflow: hidden;
+  }
+
+  .stage2BottomRow {
+    padding: 0;
+  }
+}
+
+.stage3 {
+  width: 1920px;
+  margin: 0;
+  background: #ffffff;
+  position: relative;
+  transform-origin: top center;
+}
+
+.stage3Inner {
+  padding: 0 250px 0;
+  box-sizing: border-box;
+}
+
+.stage3Title {
+  font-size: 38px;
+  font-weight: 1000;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0 0 28px;
+  color: #111111;
+  -webkit-text-stroke: 0.25px #111111;
+  text-shadow: 0 0 0 #111111, 0.25px 0 #111111, -0.25px 0 #111111;
+}
+
+.stage3Pic {
+  width: 1420px;
+  height: 900px;
+  display: block;
+  object-fit: contain;
+}
+
+@media (max-width: 800px) {
+  .stage3 {
+    width: 100%;
+    height: auto;
+    transform: none !important;
+  }
+
+  .stage3Inner {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .stage3Title {
+    font-size: clamp(20px, 5.2vw, 38px);
+    margin: 0 0 16px;
+  }
+
+  .stage3Pic {
+    width: 718px;
+    height: auto;
+  }
+}
+
+.stage4 {
+  width: 1920px;
+  margin: 0;
+  background: #ffffff;
+  position: relative;
+  transform-origin: top center;
+  display: flex;
+  flex-direction: column;
+}
+
+.stage4Inner {
+  padding: 0 250px 0;
+  box-sizing: border-box;
+}
+
+.stage4Pic {
+  width: 1421px;
+  height: 990px;
+  display: block;
+  object-fit: contain;
+}
+
+@media (max-width: 800px) {
+  .stage4 {
+    width: 100%;
+    transform: none !important;
+  }
+
+  .stage4Inner {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .stage4Pic {
+    width: 668px;
+    height: auto;
+    max-height: 563px;
+  }
+}
+
+.stage5 {
+  width: 1920px;
+  margin: 0;
+  background: #ffffff;
+  position: relative;
+  transform-origin: top center;
+  display: flex;
+  flex-direction: column;
+}
+
+.stage5Inner {
+  padding: 0 250px 0;
+  box-sizing: border-box;
+}
+
+.stage5Pic {
+  width: 1420px;
+  height: 1007px;
+  display: block;
+  object-fit: contain;
+}
+
+@media (max-width: 800px) {
+  .stage5 {
+    width: 100%;
+    transform: none !important;
+  }
+
+  .stage5Inner {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .stage5Pic {
+    width: 668px;
+    height: auto;
+  }
+}
+
+.catalogStage {
+  width: 1920px;
+  margin: 0;
+  background: #ffffff;
+  transform-origin: top center;
+}
+
+.catalogInner {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.catalogRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0;
+}
+
+.catalogDownloadText {
+  color: #111111;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.catalogButton {
+  height: calc(32px * 1.1);
+  padding: 0 calc(14px * 1.1);
+  border: 1px solid #111111;
+  background: transparent;
+  color: #111111;
+  font-size: calc(14px * 1.1);
+  font-weight: 400;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  flex: 0 0 auto;
+}
+
+.catalogButton:hover {
+  background: #F29D07;
+  color: #111111;
+}
+
+.catalogLine {
+  flex: 1 1 auto;
+  width: auto;
+  min-width: 0;
+  height: auto;
+  display: block;
+  margin: 0;
+}
+
+@media (max-width: 800px) {
+  .catalogStage {
+    width: 100%;
+    transform: none !important;
+  }
+
+  .catalogInner {
+    padding: 22px 16px !important;
+  }
+
+  .catalogRow {
+    width: 702px;
+    max-width: 100%;
+    margin: 0 auto;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .catalogDownloadText {
+    font-size: 18px;
+    line-height: 1;
+  }
+
+  .catalogButton {
+    box-sizing: border-box;
+    width: 139px;
+    height: 37px;
+    padding: 0;
+    font-size: 18px;
+    line-height: 1;
+  }
+
+  .bottom,
+  .stage2Bottom,
+  .catalogLine {
+    width: min(702px, 100%);
+    height: auto;
+    max-height: 18px;
+    object-fit: contain;
+  }
+}
+

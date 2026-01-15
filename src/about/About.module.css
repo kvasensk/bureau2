@@ -1,0 +1,142 @@
+/* About page rebuilt around 3 SVG blocks (1920px base, all values scale with viewport) */
+
+.wrapper {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #fcfcfc;
+  /* 1 unit == 1px at 1920 width, scales proportionally */
+  --u: calc(100vw / 1920);
+}
+
+.backButton {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 20px;
+  line-height: 1;
+  transition: opacity 0.2s ease;
+  z-index: 1000;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.backButton:hover {
+  opacity: 0.7;
+}
+
+.backIcon {
+  width: 40px;
+  height: 40px;
+  display: block;
+}
+
+.blocks {
+  display: flex;
+  flex-direction: column;
+}
+
+.blocks picture {
+  display: block;
+}
+
+.block1,
+.block2,
+.block3 {
+  display: block;
+  height: auto;
+}
+
+/* 1920 base:
+  block1: 1256x547, top 60, left 332 right 332
+  block2: 1298x460, top 24 from previous, left 332 right 290
+  block3: 1256x351, top 60 from previous, left 332 right 332, bottom 100
+*/
+
+.block1 {
+  width: calc(1256 * var(--u));
+  margin-top: calc(60 * var(--u));
+  margin-left: calc(332 * var(--u));
+  margin-right: calc(332 * var(--u));
+}
+
+.block2 {
+  width: calc(1298 * var(--u));
+  margin-top: calc(24 * var(--u));
+  margin-left: calc(332 * var(--u));
+  margin-right: calc(290 * var(--u));
+}
+
+.block3 {
+  width: calc(1256 * var(--u));
+  margin-top: calc(60 * var(--u));
+  margin-left: calc(332 * var(--u));
+  margin-right: calc(332 * var(--u));
+  margin-bottom: calc(100 * var(--u));
+}
+
+@media (max-width: 1000px) {
+  /* Tablet layout base: 1000px == 100% */
+  .wrapper {
+    --u: calc(100vw / 1000);
+  }
+
+  /* Keep blocks centered and scalable */
+  .block1,
+  .block2,
+  .block3 {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Tablet SVG intrinsic widths: block1 668, block2 668, block3 644 */
+  .block1 {
+    width: calc(668 * var(--u)* 1.35);
+    margin-top: calc(100 * var(--u));
+  }
+
+  .block2 {
+    width: calc(668 * var(--u)* 1.35);
+    margin-top: calc(70 * var(--u));
+  }
+
+  .block3 {
+    width: calc(644 * var(--u)* 1.35);
+    margin-top: calc(70 * var(--u));
+  }
+}
+
+@media (max-width: 500px) {
+  /* Mobile layout base: 500px == 100% */
+  .wrapper {
+    --u: calc(100vw / 500);
+  }
+
+  /* Keep blocks centered */
+  .block1,
+  .block2,
+  .block3 {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Mobile SVG intrinsic widths: b1m 280, b2m 281, b3m 263 */
+  .block1 {
+    width: calc(280 * var(--u) * 1.35);
+    margin-top: calc(44 * var(--u));
+  }
+
+  .block2 {
+    width: calc(281 * var(--u) * 1.35);
+    margin-top: calc(50 * var(--u));
+  }
+
+  .block3 {
+    width: calc(263 * var(--u) * 1.35);
+    margin-top: calc(50 * var(--u));
+  }
+}
+
