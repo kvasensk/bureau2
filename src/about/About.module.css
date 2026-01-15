@@ -46,6 +46,7 @@
 .block3Link {
   display: block;
   text-decoration: none;
+  cursor: pointer;
 }
 
 

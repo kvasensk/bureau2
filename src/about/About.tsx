@@ -44,23 +44,23 @@ export default function About() {
           />
         </picture>
 
-        <picture>
-          <source media='(max-width: 500px)' srcSet='/about/b3m.svg' />
-          <source media='(max-width: 1000px)' srcSet='/about/block3tab.svg' />
-          <a
-            className={style.block3Link}
-            href={taplinkUrl}
-            target='_blank'
-            rel='noreferrer'
-          >
+        <a
+          className={style.block3Link}
+          href={taplinkUrl}
+          target='_blank'
+          rel='noopener noreferrer'
+        >
+          <picture>
+            <source media='(max-width: 500px)' srcSet='/about/b3m.svg' />
+            <source media='(max-width: 1000px)' srcSet='/about/block3tab.svg' />
             <img
               className={style.block3}
               src='/about/block3Desk.svg'
               alt='About block 3'
               draggable={false}
             />
-          </a>
-        </picture>
+          </picture>
+        </a>
       </div>
     </div>
   );
