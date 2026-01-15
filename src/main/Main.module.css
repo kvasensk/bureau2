@@ -10,7 +10,8 @@
   flex-direction: row;
   align-items: center;
   gap: 0;
-  margin: 0 0 2.813vw;
+  margin-top: 50px;
+  margin-bottom: 2.813vw;
   cursor: pointer;
   transition: opacity 0.2s ease;
   text-decoration: none;

@@ -536,6 +536,7 @@ export const ITEMS: Record<ItemId, ItemPageProps> = {
       '/item/m2.2/bigGallery/2.png',
       '/item/m2.2/bigGallery/3.png',
       '/item/m2.2/bigGallery/4.png',
+      '',
       '/item/m2.2/bigGallery/5.png',
     ],
   },
