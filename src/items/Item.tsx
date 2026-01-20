@@ -133,6 +133,22 @@ export function ItemPage(props: ItemPageProps & { id: string }) {
     } as React.CSSProperties;
   }, [scale, vw]);
 
+  const titleButtonScale = useMemo(() => {
+    return titles.length > 1 ? 0.65 : 1;
+  }, [titles.length]);
+
+  const titleBoxesRowStyle = useMemo(() => {
+    if (titles.length <= 1) return undefined;
+    const isDesktop = vw > 500;
+    return {
+      gap: '20px',
+      justifyContent: isDesktop ? 'flex-start' : undefined,
+      width: isDesktop ? '100%' : undefined,
+      transform: `scale(${titleButtonScale})`,
+      transformOrigin: isDesktop ? 'left center' : 'center center',
+    } as React.CSSProperties;
+  }, [titles.length, vw, titleButtonScale]);
+
   const fontSizeForTight = (basePx: number, minPx: number) => {
     const d = vw <= 1000 ? 4 : 0;
     return fontSizeFor(Math.max(1, basePx - d), Math.max(1, minPx - d));
@@ -182,6 +198,9 @@ export function ItemPage(props: ItemPageProps & { id: string }) {
 
   const [activeTab, setActiveTab] = useState<'specs' | 'conditions'>('specs');
   const [activeImage, setActiveImage] = useState(0);
+  const [isGalleryModalOpen, setIsGalleryModalOpen] = useState(false);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
   const images = gallery.length
     ? gallery
@@ -218,6 +237,33 @@ export function ItemPage(props: ItemPageProps & { id: string }) {
   const clampIndex = (idx: number) => {
     const n = images.length;
     return ((idx % n) + n) % n;
+  };
+
+  // Минимальное расстояние свайпа для переключения
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) {
+      setActiveImage(i => clampIndex(i + 1)); // Свайп влево - следующее фото
+    }
+    if (isRightSwipe) {
+      setActiveImage(i => clampIndex(i - 1)); // Свайп вправо - предыдущее фото
+    }
   };
 
   useEffect(() => {
@@ -258,7 +304,7 @@ export function ItemPage(props: ItemPageProps & { id: string }) {
         <div className={style.stage} style={{ zoom: scale }}>
           <div className={style.topGrid}>
             <div className={style.mobileTitleWrap} style={mobileTitleWrapStyle}>
-              <div className={style.titleBoxesRow}>
+              <div className={style.titleBoxesRow} style={titleBoxesRowStyle}>
                 {titles.map(t => (
                   <button
                     key={`m-title-${t.id}`}
@@ -341,6 +387,48 @@ export function ItemPage(props: ItemPageProps & { id: string }) {
                     style={arrowFixedStyle ? arrowFixedStyle.img : undefined}
                   />
                 </button>
+
+                <button
+                  type='button'
+                  className={style.expandGalleryBtn}
+                  onClick={() => setIsGalleryModalOpen(true)}
+                  aria-label='Открыть галерею на полный экран'
+                >
+                  <svg
+                    width='15'
+                    height='15'
+                    viewBox='0 0 15 15'
+                    fill='none'
+                    xmlns='http://www.w3.org/2000/svg'
+                  >
+                    <circle
+                      cx='7.5'
+                      cy='7.5'
+                      r='7'
+                      stroke='black'
+                      strokeWidth='1'
+                      fill='white'
+                    />
+                    <line
+                      x1='7.5'
+                      y1='4'
+                      x2='7.5'
+                      y2='11'
+                      stroke='black'
+                      strokeWidth='1.5'
+                      strokeLinecap='round'
+                    />
+                    <line
+                      x1='4'
+                      y1='7.5'
+                      x2='11'
+                      y2='7.5'
+                      stroke='black'
+                      strokeWidth='1.5'
+                      strokeLinecap='round'
+                    />
+                  </svg>
+                </button>
               </div>
 
               <div className={style.thumbWrap}>
@@ -365,7 +453,7 @@ export function ItemPage(props: ItemPageProps & { id: string }) {
             </div>
 
             <div className={style.info}>
-              <div className={style.titleBoxesRow}>
+              <div className={style.titleBoxesRow} style={titleBoxesRowStyle}>
                 {titles.map(t => (
                   <button
                     key={`d-title-${t.id}`}
@@ -445,7 +533,7 @@ export function ItemPage(props: ItemPageProps & { id: string }) {
                   style={{ fontSize: fontSizeForTight(28, 26) }}
                 >
                   <span>Цена от </span>
-                  <span>{price}</span>
+                  <span>{price}р</span>
                 </div>
               </button>
             </div>
@@ -521,8 +609,8 @@ export function ItemPage(props: ItemPageProps & { id: string }) {
                       className={style.storyText}
                       style={{ fontSize: fontSizeFor(28, 14) }}
                     >
-                      Человек — соавтор предмета. Мы проектируем модули так,
-                      чтобы они собирались, разбирались и менялись со временем.
+                      Мы проектируем модули так, чтобы они собирались,
+                      разбирались и менялись со временем.
                     </div>
                   </div>
 
@@ -588,6 +676,61 @@ export function ItemPage(props: ItemPageProps & { id: string }) {
           </div>
         </div>
       </div>
+
+      {isGalleryModalOpen && (
+        <div
+          className={style.galleryModal}
+          onClick={() => setIsGalleryModalOpen(false)}
+        >
+          <div className={style.galleryModalContent}>
+            <button
+              type='button'
+              className={style.galleryModalClose}
+              onClick={() => setIsGalleryModalOpen(false)}
+              aria-label='Закрыть галерею'
+            >
+              <img src='/help/back.svg' alt='Закрыть' draggable={false} />
+            </button>
+
+            <div
+              className={style.galleryModalImageWrap}
+              onTouchStart={onTouchStart}
+              onTouchMove={onTouchMove}
+              onTouchEnd={onTouchEnd}
+            >
+              <button
+                type='button'
+                className={style.galleryModalArrow}
+                onClick={e => {
+                  e.stopPropagation();
+                  setActiveImage(i => clampIndex(i - 1));
+                }}
+                aria-label='Previous image'
+              >
+                <img src={leftArrowSrc} alt='' draggable={false} />
+              </button>
+
+              <Media
+                className={style.galleryModalImage}
+                src={images[clampIndex(activeImage)]}
+                alt=''
+              />
+
+              <button
+                type='button'
+                className={style.galleryModalArrow}
+                onClick={e => {
+                  e.stopPropagation();
+                  setActiveImage(i => clampIndex(i + 1));
+                }}
+                aria-label='Next image'
+              >
+                <img src={rightArrowSrc} alt='' draggable={false} />
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
