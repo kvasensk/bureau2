@@ -627,7 +627,7 @@
 .pdf {
   width: 222px;
   height: 55px;
-  padding: 0;
+  padding: 0 16px;
   border: 1px solid rgba(0, 0, 0, 0.85);
   background: transparent;
   cursor: pointer;
@@ -635,6 +635,7 @@
   font-weight: 700;
   color: rgba(0, 0, 0, 0.85);
   transition: background-color 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
 }
 
 .pdf:hover {
@@ -822,7 +823,7 @@ margin: 8px;
   }
 
   .pdf {
-    width: 255px;
+    width: 280px;
     height: 63px;
     font-size: 35px;
   }
