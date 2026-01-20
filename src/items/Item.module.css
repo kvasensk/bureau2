@@ -625,9 +625,10 @@
 }
 
 .pdf {
-  width: 222px;
+  width: fit-content;
+  min-width: 222px;
   height: 55px;
-  padding: 0 16px;
+  padding: 0 24px;
   border: 1px solid rgba(0, 0, 0, 0.85);
   background: transparent;
   cursor: pointer;
@@ -823,9 +824,11 @@ margin: 8px;
   }
 
   .pdf {
-    width: 280px;
+    width: fit-content;
+    min-width: 240px;
     height: 63px;
     font-size: 35px;
+    padding: 0 28px;
   }
 }
 
