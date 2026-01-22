@@ -258,14 +258,12 @@
   font-weight: 1000;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  font-size: 50px;
+  font-size: 32px;
   color: #111111;
   width: 100%;
   text-align: center;
-  white-space: normal;
+  white-space: nowrap;
   line-height: 1.05;
-  overflow-wrap: anywhere;
-  word-break: break-word;
   /* Extra-bold fallback if the font doesn't have 1000 weight */
   -webkit-text-stroke: 0.35px #111111;
   text-shadow: 0 0 0 #111111, 0.35px 0 #111111, -0.35px 0 #111111;
@@ -693,7 +691,7 @@
   }
 
   .titleText {
-    font-size: 20px;
+    font-size: 133px !important;
   }
   .heroWrap {
     width: 100%;

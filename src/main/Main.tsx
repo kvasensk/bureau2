@@ -134,16 +134,14 @@ export default function Main() {
       <Link to='/about' className={style.titleRow}>
         <img
           className={style.logoMain}
-          src='/help/logoMain.svg'
+          src='/help/logoMain.png'
           alt='6|5 design buro'
           draggable={false}
         />
       </Link>
       <div className={`${style.items} ${style.itemsDesktop}`}>
         <div className={style.firstLine}>
-          <div className={style.object1}>
-            {renderLinkedImg('item_1')}
-          </div>
+          <div className={style.object1}>{renderLinkedImg('item_1')}</div>
           <div className={style.object2}>{renderLinkedImg('item_7')}</div>
           <div className={style.object3}>{renderLinkedImg('item_11')}</div>
           <div className={style.object4}>{renderLinkedImg('item_17')}</div>
@@ -178,9 +176,7 @@ export default function Main() {
       <div className={style.itemsMobile} ref={itemsMobileRef}>
         <div className={style.columnMobile}>
           <div className={style.object9}>{renderLinkedImg('item_3')}</div>
-          <div className={style.object1}>
-            {renderLinkedImg('item_1')}
-          </div>
+          <div className={style.object1}>{renderLinkedImg('item_1')}</div>
           <div className={style.object2}>{renderLinkedImg('item_7')}</div>
           <div className={style.object10}>{renderLinkedImg('item_9')}</div>
           <div className={style.object11}>{renderLinkedImg('item_13')}</div>

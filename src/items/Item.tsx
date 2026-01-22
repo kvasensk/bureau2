@@ -133,10 +133,6 @@ export function ItemPage(props: ItemPageProps & { id: string }) {
     } as React.CSSProperties;
   }, [scale, vw]);
 
-  const titleButtonScale = useMemo(() => {
-    return titles.length > 1 ? 0.65 : 1;
-  }, [titles.length]);
-
   const titleBoxesRowStyle = useMemo(() => {
     if (titles.length <= 1) return undefined;
     const isDesktop = vw > 500;
@@ -144,10 +140,8 @@ export function ItemPage(props: ItemPageProps & { id: string }) {
       gap: '20px',
       justifyContent: isDesktop ? 'flex-start' : undefined,
       width: isDesktop ? '100%' : undefined,
-      transform: `scale(${titleButtonScale})`,
-      transformOrigin: isDesktop ? 'left center' : 'center center',
     } as React.CSSProperties;
-  }, [titles.length, vw, titleButtonScale]);
+  }, [titles.length, vw]);
 
   const fontSizeForTight = (basePx: number, minPx: number) => {
     const d = vw <= 1000 ? 4 : 0;
