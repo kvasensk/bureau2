@@ -46,7 +46,7 @@
 }
 
 .logoMain {
-  height: 6.875vw;
+  height: 6.2vw;
   width: auto;
   object-fit: contain;
   display: block;
@@ -253,7 +253,7 @@
 }
 
 .logoMain {
-  height: 10.875vw;
+  height: 7.4vw;
   width: auto;
 }
 
@@ -334,6 +334,11 @@
   .wrapper {
     transform: scale(clamp(0.25, calc(100vw / 600), 0.8));
     padding: 24px 24px;
+  }
+
+  .logoMain {
+    height: 9.9vw;
+    width: auto;
   }
 
   .itemsMobile {
