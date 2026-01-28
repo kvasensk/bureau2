@@ -187,8 +187,8 @@
   border: 1px solid rgb(0, 0, 0);
   background: transparent;
   width: fit-content;
-  min-width: 382px;
-  min-height: 119px;
+  min-width: 222px;
+  min-height: 89px;
   height: auto;
   box-sizing: border-box;
   align-items: center;
@@ -255,10 +255,9 @@
 
 .titleText {
   font-family: 'TT Norms', sans-serif;
-  font-weight: 1000;
+  font-weight: 800;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  font-size: 32px;
   color: #111111;
   width: 100%;
   text-align: center;
@@ -338,7 +337,6 @@
 }
 
 .priceLine {
-  font-size: 28px;
   font-weight: 600;
   color: #111111;
   white-space: nowrap;
@@ -690,9 +688,6 @@
     padding: 0;
   }
 
-  .titleText {
-    font-size: 133px !important;
-  }
   .heroWrap {
     width: 100%;
     margin-left: 0;

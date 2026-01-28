@@ -118,11 +118,18 @@ export function ItemPage(props: ItemPageProps & { id: string }) {
   const mobileTitleBoxStyle = useMemo(() => {
     if (vw > 500) return undefined;
     const s = Math.max(0.0001, scale);
-    return {
+    const style: React.CSSProperties = {
       // width: `${188 / s}px`,
       minHeight: `${51 / s}px`,
-    } as React.CSSProperties;
-  }, [scale, vw]);
+    };
+
+    if (titles.length > 1) {
+      style.minHeight = '40px';
+      style.padding = '20px';
+    }
+
+    return style;
+  }, [scale, vw, titles.length]);
 
   const mobileTitleWrapStyle = useMemo(() => {
     if (vw > 500) return undefined;
@@ -135,11 +142,17 @@ export function ItemPage(props: ItemPageProps & { id: string }) {
 
   const titleBoxesRowStyle = useMemo(() => {
     if (titles.length <= 1) return undefined;
-    const isDesktop = vw > 500;
+    const isMobile = vw <= 500;
+    if (isMobile) {
+      return {
+        justifyContent: 'flex-start',
+        gap: '124px',
+        width: 'fit-content',
+      } as React.CSSProperties;
+    }
     return {
-      gap: '20px',
-      justifyContent: isDesktop ? 'flex-start' : undefined,
-      width: isDesktop ? '100%' : undefined,
+      justifyContent: 'space-between',
+      width: '100%',
     } as React.CSSProperties;
   }, [titles.length, vw]);
 
@@ -166,13 +179,22 @@ export function ItemPage(props: ItemPageProps & { id: string }) {
     const baseH = 119;
 
     const needsClamp = baseW * s < minW || baseH * s < minH;
-    if (!needsClamp) return undefined;
+    const style: React.CSSProperties = {};
 
-    return {
-      // width: `${Math.max(baseW, minW / s)}px`,
-      minHeight: `${Math.max(baseH, minH / s)}px`,
-    } as React.CSSProperties;
-  }, [scale]);
+    if (needsClamp) {
+      // style.width = `${Math.max(baseW, minW / s)}px`;
+      style.minHeight = `${Math.max(baseH, minH / s)}px`;
+    }
+
+    if (titles.length > 1) {
+      style.flex = '1';
+      style.minWidth = '180px';
+      style.minHeight = '70px';
+      style.padding = '0 16px';
+    }
+
+    return Object.keys(style).length > 0 ? style : undefined;
+  }, [scale, titles.length]);
 
   const priceBoxFixedStyle = useMemo(() => {
     const s = Math.max(0.0001, scale);
@@ -317,7 +339,12 @@ export function ItemPage(props: ItemPageProps & { id: string }) {
                   >
                     <div
                       className={style.titleText}
-                      style={{ fontSize: fontSizeFor(28, 28) }}
+                      style={{
+                        fontSize:
+                          titles.length > 1
+                            ? fontSizeFor(20, 20)
+                            : fontSizeFor(25, 25),
+                      }}
                     >
                       {t.title}
                     </div>
@@ -466,7 +493,14 @@ export function ItemPage(props: ItemPageProps & { id: string }) {
                   >
                     <div
                       className={style.titleText}
-                      style={{ fontSize: fontSizeForTight(50, 28) }}
+                      style={{
+                        fontSize:
+                          titles.length > 1
+                            ? fontSizeForTight(28, 18)
+                            : vw <= 1200 && vw > 500
+                              ? fontSizeForTight(45, 18)
+                              : fontSizeForTight(50, 28),
+                      }}
                     >
                       {t.title}
                     </div>
@@ -524,7 +558,7 @@ export function ItemPage(props: ItemPageProps & { id: string }) {
               >
                 <div
                   className={style.priceLine}
-                  style={{ fontSize: fontSizeForTight(28, 26) }}
+                  style={{ fontSize: fontSizeForTight(24, 22) }}
                 >
                   <span>Цена от </span>
                   <span>{price}р</span>
